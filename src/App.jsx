@@ -28,7 +28,7 @@ const App = () => {
     setTheme(theme === 'dark'? 'light': 'dark')
   }
   return (
-    <div className="bg-[#fafafa] dark:bg-[#202c37]">
+    <div className="section bg-[#fafafa] dark:bg-[#202c37] min-h-screen">
       <Navbar theme={theme} handleSwitchTheme={handleSwitchTheme}/>
       <Routes>
         <Route path="/Country-Search/" element={<SearchArea />} />

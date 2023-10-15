@@ -1,5 +1,5 @@
 import { Search, ChevronDown } from "lucide-react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect,useMemo, useState } from "react";
 import CountryArea from "./CountryArea";
 
 const regions = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
@@ -11,24 +11,27 @@ const SearchArea = () => {
 
   const [country, setCountry] = useState("");
 
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const response = await fetch("https://restcountries.com/v3.1/all");
+  useEffect(()=> {
 
-        if (!response.ok) {
-          alert("Check Your Internet Connection!😔😔");
+      const fetchCountries = async () => {
+        try {
+          const response = await fetch("https://restcountries.com/v3.1/all");
+  
+          if (!response.ok) {
+            alert("Check Your Internet Connection!😔😔");
+          }
+  
+          const jsondata = await response.json();
+          setData(jsondata);
+        } catch (error) {
+          alert(error);
+        } finally {
+          setLoading(false);
         }
+      };
+    
+    fetchCountries()
 
-        const jsondata = await response.json();
-        setData(jsondata);
-      } catch (error) {
-        alert(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchCountries();
   }, []);
 
   const handleSubmit = async (country) => {
@@ -134,7 +137,7 @@ const SearchArea = () => {
         </div>
       </div>
 
-      <CountryArea data={data} />
+      <CountryArea data={data} loading={loading}/>
     </>
   );
 };

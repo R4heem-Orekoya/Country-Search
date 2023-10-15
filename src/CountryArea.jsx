@@ -1,7 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Loader2 } from "lucide-react";
 
-const CountryArea = ({ data }) => {
+const CountryArea = ({ data, loading }) => {
+
+  if(loading){
+    return <p className="pt-20 text-[#2b3945] dark:text-white"><Loader2 size={100} strokeWidth={2} className="animate-spin duration-100 mx-auto"/></p>
+  }
   return (
     <>
       <section className="w-[1000px] max-w-[90%] mx-auto pb-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -11,6 +16,7 @@ const CountryArea = ({ data }) => {
               <img
                 src={count.flags.png}
                 alt={count.flags.alt}
+                loading="lazy"
                 className="w-full rounded-t-md  aspect-video object-cover"
               />
             </Link>

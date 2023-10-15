@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
+import { ChevronLeft, Loader2 } from "lucide-react";
 
 const Details = () => {
   const { id } = useParams();
   const [info, setInfo] = useState([]);
   const [borderCountryNames, setBorderCountryNames] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchCountries = async () => {
+      setLoading(true)
       try {
         const response = await fetch(
           `https://restcountries.com/v3.1/name/${id}?fullText=true`
@@ -33,7 +34,6 @@ const Details = () => {
           setBorderCountryNames([]);
         }
       } catch (error) {
-        // alert(error);
         console.log(error);
       } finally {
         setLoading(false);
@@ -52,6 +52,10 @@ const Details = () => {
     }
     return code;
   };
+
+  if(loading){
+    return <p className="dark:text-white text-[#202c37]"><Loader2 size={100} strokeWidth={2} className="mx-auto  mt-40 lg:mt-64 animate-spin"/></p>
+  }
 
   return (
     <section className="w-[1000px] max-w-[90%] dark:bg-[#202c37] dark:text-white mx-auto py-12 flex flex-col items-start">
