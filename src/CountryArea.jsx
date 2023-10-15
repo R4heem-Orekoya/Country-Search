@@ -7,7 +7,7 @@ const CountryArea = ({ data }) => {
       <section className="w-[1000px] max-w-[90%] mx-auto pb-12 grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {data.map((count, index) => (
           <div key={index} className="bg-white dark:bg-[#2b3945] dark:text-white shadow-md rounded-md">
-            <Link to={`/details/${count.name.common}`}>
+            <Link to={`/Country-Search/details/${count.name.common}`}>
               <img
                 src={count.flags.png}
                 alt={count.flags.alt}

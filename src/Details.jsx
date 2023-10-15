@@ -55,7 +55,7 @@ const Details = () => {
 
   return (
     <section className="w-[1000px] max-w-[90%] dark:bg-[#202c37] dark:text-white mx-auto py-12 flex flex-col items-start">
-      <Link to="/">
+      <Link to="/Country-Search/">
         <button className="p-2 px-6 shadow-md dark:bg-[#2b3945] dark:text-white rounded-md flex items-center gap-1 text-lg group">
           <ChevronLeft size={25} strokeWidth={1.5} strokeOpacity={0.7} />
           Back
@@ -122,7 +122,7 @@ const Details = () => {
                 {borderCountryNames.length > 0
                   ? borderCountryNames.map((borderName, index) => (
                       <Link
-                        to={`/details/${borderName}`}
+                        to={`/Country-Search/details/${borderName}`}
                         key={index}
                         className="bg-white dark:bg-[#2b3945] dark:text-white shadow-sm px-3 py-1 rounded-md"
                       >

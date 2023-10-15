@@ -31,8 +31,8 @@ const App = () => {
     <div className="bg-[#fafafa] dark:bg-[#202c37]">
       <Navbar theme={theme} handleSwitchTheme={handleSwitchTheme}/>
       <Routes>
-        <Route path="/" element={<SearchArea />} />
-        <Route path="/details/:id" element={<Details />} />
+        <Route path="/Country-Search/" element={<SearchArea />} />
+        <Route path="/Country-Search/details/:id" element={<Details />} />
       </Routes>
       <BackToTop />
     </div>
